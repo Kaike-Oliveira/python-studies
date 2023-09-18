@@ -26,4 +26,4 @@ while rounds <= total_tries:
         tries = tries - 1
         rounds = rounds + 1
 
-print("Try again")
+print("Game Over")
