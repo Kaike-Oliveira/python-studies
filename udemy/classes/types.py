@@ -26,5 +26,3 @@ print(type(1.2))
 print(type('12'))
 print(type(1 == 1))
 print(type(1 == 5))
-
-
