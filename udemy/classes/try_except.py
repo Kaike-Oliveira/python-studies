@@ -7,6 +7,9 @@
 
 number = input('Type a number: ')
 
-double_number = float(number) * 2
+try:
+    double_number = float(number) * 2
+    print(f'The double of {number} is {double_number}')
+except:
+    print('This is not a number')
 
-print(f'The double of {number} is {double_number}')
