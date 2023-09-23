@@ -8,8 +8,9 @@
 number = input('Type a number: ')
 
 try:
+    print('string number:', number)
+    print('If occur an error here, this will not show')
     double_number = float(number) * 2
     print(f'The double of {number} is {double_number}')
 except:
     print('This is not a number')
-
