@@ -5,3 +5,8 @@
 # TRY - Try to execute the code
 # EXCEPT - Find an error
 
+number = input('Type a number: ')
+
+double_number = float(number) * 2
+
+print(f'The double of {number} is {double_number}')
