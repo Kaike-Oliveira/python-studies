@@ -24,3 +24,13 @@ while True:
     if valid_numbers is None:
         print('Invalid number!')
         continue
+
+    if operator == '+':
+        print(num_1_float + num_2_float)
+    elif operator == '-':
+        print(num_1_float - num_2_float)
+    elif operator == '*':
+        print(num_1_float * num_2_float)
+    else:
+        print('Invalid operator!')
+
