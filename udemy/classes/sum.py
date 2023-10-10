@@ -1,7 +1,8 @@
 # Sum
 
-def sum_def(x: float, y: float):
-    print(x + y)
+# Can apply a default value to a arg
+def sum_def(x: float, y: float, z: float = 0):
+    print(x + y + z)
 
 
 # Named param
