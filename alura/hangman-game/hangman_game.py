@@ -3,32 +3,17 @@
 # Imports
 import random
 
+
 def play():
-    print("******************************************")
-    print("*   **   **   **   **   **   **   **   *")
-    print("* HANGMAN * HANGMAN * HANGMAN * HANGMAN *")
-    print("*   **   **   **   **   **   **   **   *")
-    print("******************************************")
+    start_game()
 
-    #  Read the file of secret words
-    file = open('secret_words.txt', 'r')
-    words = []
-    for line in file:
-        line = line.strip()
-        words.append(line)
-
-    file.close()
-
-    #  Select a ramdom word
-    number = random.randrange(0, len(words))
-
-    secret_word = words[number].lower()
+    secret_word = choose_secret_word()
 
     times = 5
     lose = False
     win = False
 
-    correct_letters = ['_' for letter in secret_word]
+    correct_letters = start_correct_word(secret_word)
 
     while not lose and not win:
         guess = input('Type a letter: ').lower()
@@ -53,5 +38,35 @@ def play():
             lose = True
 
 
+def start_game():
+    print("******************************************")
+    print("*   **   **   **   **   **   **   **   *")
+    print("* HANGMAN * HANGMAN * HANGMAN * HANGMAN *")
+    print("*   **   **   **   **   **   **   **   *")
+    print("******************************************")
+
+
+def choose_secret_word():
+    #  Read the file of secret words
+    file = open('secret_words.txt', 'r')
+    words = []
+    for line in file:
+        line = line.strip()
+        words.append(line)
+
+    file.close()
+
+    #  Select a ramdom word
+    number = random.randrange(0, len(words))
+    secret_word = words[number].lower()
+
+    return secret_word
+
+
+def start_correct_word(secret_word):
+    return ['_' for letter in secret_word]
+
+
 if __name__ == '__main__':
     play()
+
