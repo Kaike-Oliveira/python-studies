@@ -7,24 +7,29 @@ def play():
     print("*   **   **   **   **   **   **   **   *")
     print("******************************************")
 
-    secret_word = 'universe'
+    secret_word = 'banana'
     lose = False
     win = False
     times = 5
-    word = ''
+    correct_letters = ['_', '_', '_', '_', '_', '_']
     wrong_letters = []
+    print(wrong_letters)
 
     while not lose and not win:
         guess = input('Type a letter: ').lower()
+        guess = guess.strip()
         index = 0
 
-        for letter in secret_word:
-            if letter == guess:
-                print(f'Correctly letter {letter} in position {index}!')
-                print()
-            index += 1
+        if guess in secret_word:
+            for letter in secret_word:
+                if letter == guess:
+                    correct_letters[index] = letter
+                    print(correct_letters)
+                index += 1
+        else:
+            times -= 1
 
-        if word == secret_word:
+        if '_' not in correct_letters:
             print('You win! Congratulations!')
             win = True
         elif times < 1:
