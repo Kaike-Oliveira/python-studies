@@ -1,5 +1,8 @@
 # Hangman Game
 
+# Imports
+import random
+
 def play():
     print("******************************************")
     print("*   **   **   **   **   **   **   **   *")
@@ -7,13 +10,25 @@ def play():
     print("*   **   **   **   **   **   **   **   *")
     print("******************************************")
 
-    secret_word = 'banana'
+    #  Read the file of secret words
+    file = open('secret_words.txt', 'r')
+    words = []
+    for line in file:
+        line = line.strip()
+        words.append(line)
+
+    file.close()
+
+    #  Select a ramdom word
+    number = random.randrange(0, len(words))
+
+    secret_word = words[number].lower()
+
+    times = 5
     lose = False
     win = False
-    times = 5
-    correct_letters = ['_', '_', '_', '_', '_', '_']
-    wrong_letters = []
-    print(wrong_letters)
+
+    correct_letters = ['_' for letter in secret_word]
 
     while not lose and not win:
         guess = input('Type a letter: ').lower()
