@@ -7,6 +7,9 @@ class Account:
         self.balance = balance
         self.limit = limit
 
+    def show_account_details(self):
+        print(self.__dict__)
+
     def show_extract(self):
         print(self.balance)
 
@@ -21,3 +24,4 @@ kaike_account = Account(1233, 'Kaike Cesar Oliveira', 1305.90, 230.00)
 kaike_account.show_extract()
 kaike_account.deposit(240.98)
 kaike_account.show_extract()
+kaike_account.show_account_details()
