@@ -2,26 +2,28 @@
 
 class Account:
     def __init__(self, number: int, owner: str, balance: float, limit: float):
-        self.number = number
-        self.owner = owner
-        self.balance = balance
-        self.limit = limit
+        self.__number = number
+        self.__owner = owner
+        self.__balance = balance
+        self.__limit = limit
 
     def show_account_details(self):
         print(self.__dict__)
 
     def show_extract(self):
-        print(self.balance)
+        print(self.__balance)
 
     def deposit(self, value: float):
-        self.balance += value
+        self.__balance += value
 
     def withdraw(self, value: float):
-        self.balance -= value
+        self.__balance -= value
+
+    def transfer(self, value: float, target):
+        self.withdraw(value)
+        target.deposit(value)
 
 
-kaike_account = Account(1233, 'Kaike Cesar Oliveira', 1305.90, 230.00)
-kaike_account.show_extract()
-kaike_account.deposit(240.98)
-kaike_account.show_extract()
-kaike_account.show_account_details()
+account_1 = Account(1233, 'Kaike Cesar Oliveira', 1305.90, 230.00)
+account_2 = Account(321, 'Jonas', 00.00, 00.00)
+account_1.transfer(1200.00, account_2)
