@@ -17,7 +17,11 @@ class Account:
         self.__balance += value
 
     def withdraw(self, value: float):
-        self.__balance -= value
+        limit = self.__balance + self.__limit
+        if limit <= 0 and value > limit:
+            print('Sorry you cannot withdraw money! Because you do not have balance')
+        else:
+            self.__balance -= value
 
     def transfer(self, value: float, target):
         self.withdraw(value)
