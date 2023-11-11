@@ -21,8 +21,8 @@ class Model:
     def add_like(self):
         self._likes += 1
 
-    def show_details(self):
-        print(f'{show.name} | {show.year} | {show.likes}')
+    def __str__(self):
+        return f'{show.name} | {show.year} | {show.likes}'
 
 
 class Movie(Model):
@@ -30,8 +30,8 @@ class Movie(Model):
         super().__init__(name, year)
         self.time = time
 
-    def show_details(self):
-        print(f'{show.name} | {show.year} | {self.time} | {show.likes}')
+    def __str__(self):
+        return f'{show.name} | {show.year} | {self.time} | {show.likes}'
 
 
 class Serie(Model):
@@ -39,14 +39,24 @@ class Serie(Model):
         super().__init__(name, year)
         self.seasons = seasons
 
-    def show_details(self):
-        print(f'{show.name} | {show.year} | {self.seasons} | {show.likes}')
+    def __str__(self):
+        return f'{show.name} | {show.year} | {self.seasons} | {show.likes}'
+
+
+class Playlist(list):
+    def __init__(self, name, shows):
+        self.__name = name
+        super().__init__(shows)
 
 
 avengers = Movie('avengers - infinite war', 2018, 160)
 see = Serie('see', 2019, 2)
+the_last_of_us = Serie('The last of us', 2023, 1)
+the_pope_exorcist = Movie('The pope exorcist', 2023, 103)
 
-favorites = [avengers, see]
+playlist = [avengers, see, the_last_of_us, the_pope_exorcist]
+
+favorites = Playlist('Favorites', playlist)
 
 for show in favorites:
-    show.show_details()
+    print(show)
