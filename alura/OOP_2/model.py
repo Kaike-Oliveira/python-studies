@@ -43,10 +43,18 @@ class Serie(Model):
         return f'{show.name} | {show.year} | {self.seasons} | {show.likes}'
 
 
-class Playlist(list):
-    def __init__(self, name, shows):
+class Playlist:
+    def __init__(self, name: str, shows):
         self.__name = name
-        super().__init__(shows)
+        self._shows = shows
+
+    @property
+    def show_list(self):
+        return self._shows
+
+    @property
+    def length(self):
+        return len(self._shows)
 
 
 avengers = Movie('avengers - infinite war', 2018, 160)
@@ -58,5 +66,5 @@ playlist = [avengers, see, the_last_of_us, the_pope_exorcist]
 
 favorites = Playlist('Favorites', playlist)
 
-for show in favorites:
+for show in favorites.show_list:
     print(show)
