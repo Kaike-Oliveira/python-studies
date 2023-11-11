@@ -48,9 +48,8 @@ class Playlist:
         self.__name = name
         self._shows = shows
 
-    @property
-    def show_list(self):
-        return self._shows
+    def __getitem__(self, item):
+        return self._shows[item]
 
     @property
     def length(self):
@@ -66,5 +65,5 @@ playlist = [avengers, see, the_last_of_us, the_pope_exorcist]
 
 favorites = Playlist('Favorites', playlist)
 
-for show in favorites.show_list:
+for show in favorites:
     print(show)
