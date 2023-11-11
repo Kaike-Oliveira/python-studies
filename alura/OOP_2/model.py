@@ -51,6 +51,9 @@ class Playlist:
     def __getitem__(self, item):
         return self._shows[item]
 
+    def __len__(self):
+        return len(self._shows)
+
 
 avengers = Movie('avengers - infinite war', 2018, 160)
 see = Serie('see', 2019, 2)
