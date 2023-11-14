@@ -1,14 +1,10 @@
 # Main file
 
 # Imports
-from log import LogFileMixin, LogPrintMixin
+from eletronic import Smartphone
 
-print('Main')
+iphone_13 = Smartphone('Iphone 13')
+s22 = Smartphone('S22')
 
-log_print = LogPrintMixin()
-log_print.log_error('Any thing')
-log_print.log_success('Any thing')
-
-log_file = LogFileMixin()
-log_file.log_error('Any thing')
-log_file.log_success('Any thing')
+iphone_13.turn_on()
+s22.log_success('Logged success!')
