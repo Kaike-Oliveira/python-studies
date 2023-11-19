@@ -1,20 +1,38 @@
 # Imports
-from abc import ABC
+import accounts
+import people
 
 
-class Person(ABC):
-    def __init__(self, name: str, age: int):
-        self._name = name
-        self._age = age
+class Bank:
+    def __init__(
+        self,
+        branches: list[str] | None = None,
+        customers: list[people.Person] | None = None,
+        accounts: list[accounts.Account] | None = None,
+    ):
+        self.branches = branches or []
+        self.customers = customers or []
+        self.accounts = accounts or []
 
-    @property
-    def name(self):
-        return self._name
+    def _validate_branch(self, account) -> bool:
+        validate_result = False
+        if account.branch in self.branches:
+            validate_result = True
+        return validate_result
 
-    @property
-    def age(self):
-        return self._age
+    def _validate_customer(self, customer) -> bool:
+        validate_result = False
+        if customer in self.customers:
+            validate_result = True
+        return validate_result
 
+    def _validate_account(self, account) -> bool:
+        validate_result = False
+        if account in self.accounts:
+            validate_result = True
+        return validate_result
 
-class Customer(Person, Account):
-    pass
+    def authenticate(self, customer, account):
+        return self._validate_account(account) and \
+            self._validate_branch(account) and \
+            self._validate_customer(customer)

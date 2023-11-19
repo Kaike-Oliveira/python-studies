@@ -28,6 +28,11 @@ class Account(ABC):
     def details(self):
         print(f'Your balance is: ${self._balance:.2f}')
 
+    def __repr__(self):
+        class_name = type(self).__name__
+        attrs = f'({self._branch!r}, {self._number!r}, {self._balance})'
+        return f'{class_name}{attrs}'
+
 
 class CurrentAccount(Account):
     def __init__(
@@ -51,6 +56,12 @@ class CurrentAccount(Account):
 
         print('Unable to withdraw the desired amount!')
 
+    def __repr__(self):
+        class_name = type(self).__name__
+        attrs = f'({self._branch!r}, {self._number!r}, {self._balance}, '\
+            f'{self._limit})'
+        return f'{class_name}{attrs}'
+
 
 class SavingsAccount(Account):
     def withdraw(self, value: float):
@@ -62,12 +73,3 @@ class SavingsAccount(Account):
             return self._balance
 
         print('Unable to withdraw the desired amount!')
-
-
-if __name__ == '__main__':
-    sa1 = SavingsAccount('001', 123, 0)
-    sa1.deposit(123.00)
-    sa1.withdraw(12.00)
-
-    ca1 = CurrentAccount('001', 12, 0, 100)
-    ca1.withdraw(100)
