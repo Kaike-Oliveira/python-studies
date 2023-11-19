@@ -16,21 +16,5 @@ class Person(ABC):
         return self._age
 
 
-class Account(ABC):
-    def __init__(self, number: int, balance: float):
-        self._branch = '0001'
-        self._number = number
-        self._balance = balance
-
-    def withdraw(self, value):
-        return self._balance - value
-
-    def deposit(self, value):
-        return self._balance + value
-
-    def extract(self):
-        return self._balance
-
-
 class Customer(Person, Account):
     pass
