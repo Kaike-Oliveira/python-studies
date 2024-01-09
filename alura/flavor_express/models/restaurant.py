@@ -1,6 +1,10 @@
 # Libraries
 from uuid import uuid4
 
+# Imports
+from alura.flavor_express.models.menu.drink import Drink
+from alura.flavor_express.models.menu.menu_item import MenuItem
+from alura.flavor_express.models.menu.plate import Plate
 from models.rate import Rate
 
 
@@ -13,6 +17,7 @@ class Restaurant:
         self._category = category
         self._status = False
         self._rate = []
+        self._menu = []
         Restaurant.restaurants.append(self)
 
     def __str__(self) -> str:
@@ -38,15 +43,29 @@ class Restaurant:
     @property
     def rate_average(self) -> float:
         if not self._rate:
-            return 0  # or handle this case appropriately, e.g., return a default value
+            return 0
 
-        sum_grades = sum(rate._grade for rate in self._rate if rate._grade is not None)
-        total_grades = len([rate for rate in self._rate if rate._grade is not None])
+        sum_grades = sum(
+            rate._grade for rate in self._rate if rate._grade is not None)
+        total_grades = len(
+            [rate for rate in self._rate if rate._grade is not None])
 
         if total_grades == 0:
-            return 0  # or handle this case appropriately, e.g., return a default value
+            return 0
 
         average = round(sum_grades / total_grades, 1)
 
         return average
 
+    def add_menu_item(self, item):
+        if isinstance(item, MenuItem):
+            self._menu.append(item)
+
+    @property
+    def show_menu(self):
+        print(f"{self._name}'s Menu")
+        for index, item in enumerate(self._menu, start=1):
+            if hasattr(item, 'description'):
+                print(f'{index}. Name: {item._name} | Price: {item._price} | Description: {item._description}')
+            elif hasattr(item, 'size'):
+                print(f'{index}. Name: {item._name} | Price: {item._price} | Size: {item._size}')

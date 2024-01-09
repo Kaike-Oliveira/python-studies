@@ -1,13 +1,14 @@
 from models.restaurant import Restaurant
+from models.menu.plate import Plate
+from models.menu.drink import Drink
 
 restaurant_praca = Restaurant('Praca', 'Gourmet')
-mexican_restaurant = Restaurant('Los Salitos', 'Mexican')
-japonese_restaurant = Restaurant('Sakura', 'Japanese')
+orange_juice = Drink('Orange', 6.50, 750)
+pizza = Plate('Pizza', 27.90, 'Cheese pizza')
 
-mexican_restaurant.active_restaurant()
 
 def main():
-    Restaurant.show_restaurants()
+    print(pizza)
 
 
 if __name__ == '__main__':
